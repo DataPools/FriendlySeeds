@@ -20,17 +20,3 @@ function validateInput() {
         document.getElementById("submitspinner").style.display = 'none';
         document.getElementById("submitbutton").disabled = false;
 }
-
-
-function hashCode(value) {
-  var h = 0;
-  if (value.length > 0) {
-      for (var i = 0; i < value.length; i++) {
-          {
-              h = 31 * h + (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(value[i]);
-          }
-          ;
-      }
-  }
-  return h;
-}

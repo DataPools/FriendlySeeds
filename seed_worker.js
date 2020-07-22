@@ -2,6 +2,7 @@
   onmessage = function(e) {
     seed = e;
    };
+   wait(1000);
    console.log(seed);
   var wordLen = 50;
   var maxValue = 126;
@@ -26,7 +27,7 @@
       }
   }
   postMessage("Could Not Find Seed");
-  
+
 function hashCode(value) {
   var h = 0;
   if (value.length > 0) {
@@ -38,4 +39,11 @@ function hashCode(value) {
       }
   }
   return h;
+}
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
 }

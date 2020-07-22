@@ -1,9 +1,7 @@
-function makeSeedFriendly() {
   var seed = 0;
   onmessage = function(e) {
     seed = e;
    };
-  console.log(seed);
   alert("This could take up to several minutes depending on your computer. Click ok to start the conversion.");
   var wordLen = 50;
   var maxValue = 126;
@@ -28,4 +26,3 @@ function makeSeedFriendly() {
       }
   }
   postMessage("Could Not Find Seed");
-}

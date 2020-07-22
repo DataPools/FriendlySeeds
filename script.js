@@ -5,7 +5,7 @@ function validateInput() {
         document.getElementById("generatedSeed").value = 'Computing...';
         if(input.length > 0) {
           if(input >= -2147483648 && input <= 2147483647) {
-              var w = new Worker("https://friendlyseed.ishaanraja1.repl.co/seed_worker.js");
+              var w = new Worker("./seed_worker.js");
               w.postMessage(input);
               w.onmessage = function(event){
                 document.getElementById("generatedSeed").value = "Seed: "+event.data;

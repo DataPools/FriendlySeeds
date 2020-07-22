@@ -10,6 +10,8 @@ function validateInput() {
               w.onmessage = function(event){
                 document.getElementById("generatedSeed").value = "Seed: "+event.data;
                 document.getElementById("generatedSeed").style.color = '';
+                document.getElementById("submitspinner").style.display = 'none';
+                document.getElementById("submitbutton").disabled = false;
                 w.terminate();
               };
             }
@@ -18,6 +20,4 @@ function validateInput() {
               document.getElementById("generatedSeed").style.color = 'red';
             }
         }
-        document.getElementById("submitspinner").style.display = 'none';
-        document.getElementById("submitbutton").disabled = false;
 }

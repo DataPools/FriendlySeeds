@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<meta name="description" content="Convert your score between SAT and ACT easily.">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Make Minecraft Seeds Friendlier</title>
+	<!-- Bootstrap core CSS -->
+	<link href="https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="script.js"></script>
+	<!-- Custom styles for this template -->
+	<link href="style.css" rel="stylesheet">
+	<style>
+		body {
+			padding-top: 0px;
+			padding-bottom: 45px;
+		}
+
+		.form-signin {
+			padding: 0px;
+			max-width: 400px;
+		}
+
+		.explanation {
+			text-align: left;
+			font-size: 15px;
+			color: #343a40;
+			padding: 5px 15px 15px 15px;
+		}
+
+		h1 {
+			font-size: 50px;
+			margin-bottom: 10px;
+			color: purple;
+		}
+
+		.footer {
+			background-color: #dcdcdc;
+			height: 7vh;
+			position: fixed;
+			bottom: 0px;
+			margin: 0 auto;
+			padding-top: 2.5vh;
+			min-width: 100%;
+			font-size: 13px;
+		}
+
+		.footer a {
+			color: #343a40;
+		}
+
+		#submitbutton {
+			margin-top: 10px;
+		}
+		#submitspinner {
+			display: none;
+		}
+	</style>
+</head>
+
+<body id="body" class="text-center">
+	<form class="form-signin">
+		<h1 class="text-dark">Make Minecraft Seeds Friendlier!</h1>
+		<h1 class="h5 mb-3 font-weight-normal">Convert numerical Minecraft seeds to words & letters.</h1>
+		<input type="text" id="inputSeed" class="form-control" placeholder="Enter a numerical Minecraft seed" required autofocus>
+      <input type="text" id="generatedSeed" class="form-control" placeholder="Converted seed appears here" readonly>
+			<button type="button" id="submitbutton" onclick="validateInput()" class="btn btn-primary">
+				Generate
+				<span id="submitspinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span class="sr-only">Loading...</span>
+			</button>
+	<div class="explanation">
+	<h6>What is this?</h6>
+	<p>If you have a long numerical Minecraft (Java Edition) seed that want to easily share with your friends, this tool is for you!</p>
+	<p>Just input your seed above, and it will get converted to letters. </p>
+  <p>Due to constraints of Minecraft, the numerical seed must be between -2,147,483,648 and 2,147,483,647</p>
+</div>
+    </form>
+<footer class="footer"><a href="https://github.com/DataPools/FriendlySeed">A Project by DataPools</a></footer>
+  </body>
+</html>

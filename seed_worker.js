@@ -1,6 +1,6 @@
   var seed = 0;
   onmessage = function(e) {
-    seed = e;
+    seed = e.data;
     console.log(seed);
     findFriendlySeed(seed);
    };

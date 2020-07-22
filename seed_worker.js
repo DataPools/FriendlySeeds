@@ -2,7 +2,7 @@
   onmessage = function(e) {
     seed = e;
    };
-  alert("This could take up to several minutes depending on your computer. Click ok to start the conversion.");
+   console.log(seed);
   var wordLen = 50;
   var maxValue = 126;
   var minValue = 33;

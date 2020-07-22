@@ -4,17 +4,28 @@
     findFriendlySeed(seed);
    };
   function findFriendlySeed(seed) {
-  var wordLen = 50;
-  var maxValue = 126;
+  var previousHashes = new Map();
+  var maxWordLen = 50;
+  //This is the "!" char
   var minValue = 33;
-  for (var j = 1; j <= wordLen; j++) {
+  //This is the "~" char
+  var maxValue = 126;
+  for (var j = 1; j <= maxWordLen; j++) {
       var arr = new Array(j);
+      previousHashes = new Map();
 			for(var i=0;i<arr.length;i++) {
 				arr[i] = String.fromCharCode(minValue);
 			}
       while(arr[0].charCodeAt(0) < maxValue) {
-          if(hashCode(arr) == seed) {
+          var hash = hashCode(arr);
+          if(hash == seed) {
             postMessage(arr.join(''));
+          }
+          previousHashes.set(hash,arr.join(''));
+          //The "| 0" is needed to simulate 32 bit integer overflow that Java ints have
+          var ourYHashCode = seed-((31 ** j)*hash) | 0;
+          if(previousHashes.has(ourYHashCode)) {
+            postMessage(arr.join('')+previousHashes.get(ourYHashCode));
           }
           for(var i=1;i<arr.length;i++) {
             if(arr[i].charCodeAt(0) == maxValue) {
@@ -35,8 +46,9 @@ function hashCode(value) {
       for (var i = 0; i < value.length; i++) {
           {
               h = 31 * h + (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(value[i]);
+              //The "| 0" is needed to simulate 32 bit integer overflow that Java ints have
+              h = h | 0;
           }
-          ;
       }
   }
   return h;

@@ -1,3 +1,5 @@
+document.getElementById("submitspinner").style.display = 'none';
+document.getElementById("submitbutton").disabled = false;
 function validateInput() {
         var input = document.getElementById("inputSeed").value;
         document.getElementById("submitspinner").style.display = 'inline-block';
@@ -11,6 +13,7 @@ function validateInput() {
                 document.getElementById("generatedSeed").value = "Seed: "+event.data;
                 document.getElementById("generatedSeed").style.color = '';
               };
+              w.terminate();
             }
             else {
               document.getElementById("generatedSeed").value = "Invalid score";

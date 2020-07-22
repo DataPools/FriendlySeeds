@@ -1,5 +1,3 @@
-document.getElementById("submitspinner").style.display = 'none';
-document.getElementById("submitbutton").disabled = false;
 function validateInput() {
         var input = document.getElementById("inputSeed").value;
         document.getElementById("submitspinner").style.display = 'inline-block';

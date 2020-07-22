@@ -10,8 +10,8 @@ function validateInput() {
               w.onmessage = function(event){
                 document.getElementById("generatedSeed").value = "Seed: "+event.data;
                 document.getElementById("generatedSeed").style.color = '';
+                w.terminate();
               };
-              w.terminate();
             }
             else {
               document.getElementById("generatedSeed").value = "Invalid score";

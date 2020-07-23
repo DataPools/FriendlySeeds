@@ -8,7 +8,7 @@ function validateInput() {
               var w = new Worker("./seed_worker.js");
               w.postMessage(input);
               w.onmessage = function(event){
-                document.getElementById("generatedSeed").value = "Seed: "+event.data;
+                document.getElementById("generatedSeed").value = event.data;
                 finished();
                 w.terminate();
               };

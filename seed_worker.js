@@ -1,4 +1,8 @@
   var seed = 0;
+  //This is the 'A' char
+  var minValue = 65;
+  //This is the 'z' char
+  var maxValue = 122;
   onmessage = function(e) {
     seed = e.data;
     findFriendlySeed(seed);
@@ -6,17 +10,14 @@
   function findFriendlySeed(seed) {
   var previousHashes = new Map();
   var maxWordLen = 50;
-  //This is the 'A' char
-  var minValue = 65;
-  //This is the 'z' char
-  var maxValue = 122;
   for (var j = 1; j <= maxWordLen; j++) {
       var arr = new Array(j);
       previousHashes = new Map();
-			for(var i=0;i<arr.length;i++) {
+			for(var i=0;i<arr.length-1;i++) {
 				arr[i] = String.fromCharCode(minValue);
 			}
-      while(arr[0].charCodeAt(0) < maxValue) {
+      arr[arr.length-1] = String.fromCharCode(minValue-1);
+      while(increment(arr)) {
           var hash = hashCode(arr);
           if(hash == seed) {
             postMessage(arr.join(''));
@@ -27,18 +28,31 @@
           if(previousHashes.has(ourYHashCode)) {
             postMessage(arr.join('')+previousHashes.get(ourYHashCode));
           }
-          for(var i=1;i<arr.length;i++) {
-            if(arr[i].charCodeAt(0) == maxValue) {
-              var val = arr[i-1].charCodeAt(0);
-              arr[i-1] = (val == maxValue) ? String.fromCharCode(minValue):String.fromCharCode(val+1);
-            }
 				}
-        var last = arr[arr.length-1].charCodeAt(0);
-				arr[arr.length-1] = (last == maxValue) ? String.fromCharCode(minValue):String.fromCharCode(last+1);
       }
+      postMessage("Could Not Find Seed");
   }
-  postMessage("Could Not Find Seed");
-}
+
+
+function increment(arr) {
+		if(arr[0].charCodeAt(0) > maxValue) {
+			return false;
+		}
+		arr[arr.length-1] = nextChar(arr[arr.length-1]);
+		for(var i=arr.length-1;i>0;i--) {
+			if(arr[i].charCodeAt(0) > maxValue) {
+				arr[i] = String.fromCharCode(minValue);
+				if(i > 0) {
+					arr[i-1] = nextChar(arr[i-1]);
+				}
+			}
+		}
+		return arr[0].charCodeAt(0) <= maxValue;
+	}
+
+  function nextChar(c) {
+      return String.fromCharCode(c.charCodeAt(0) + 1);
+  }
 
 function hashCode(value) {
   var h = 0;

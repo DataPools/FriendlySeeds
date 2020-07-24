@@ -6,10 +6,10 @@
   function findFriendlySeed(seed) {
   var previousHashes = new Map();
   var maxWordLen = 50;
-  //This is the "!" char
-  var minValue = 33;
-  //This is the "~" char
-  var maxValue = 126;
+  //This is the 'A' char
+  var minValue = 65;
+  //This is the 'z' char
+  var maxValue = 122;
   for (var j = 1; j <= maxWordLen; j++) {
       var arr = new Array(j);
       previousHashes = new Map();

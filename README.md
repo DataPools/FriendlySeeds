@@ -7,7 +7,7 @@ The seed `12345678` converts to `AMhhAFRO`
 [The tool can be accessed here](https://datapools.github.io/FriendlySeeds/)
 
 ## How does it work?
-Under the hood, Minecraft uses Java's String.hashCode() method to convert words into actual numbers that can be used for world generation. This tool reverses that method to turn a long numerical seed (from the output of /seed for example) into a shareable collection of letters. This also worksfor Minecraft Bedrock Edition, which uses the exact same method to convert words into numbers. 
+Under the hood, Minecraft uses Java's String.hashCode() method to convert words into actual numbers that can be used for world generation. This tool reverses that method to turn a long numerical seed (from the output of /seed for example) into a shareable collection of letters. This also works for Minecraft Bedrock Edition, which uses the exact same method to convert words into numbers. 
 
 Unfortunately, String.hashCode() returns an `int`, which can only be between -2,147,483,648 and 2,147,483,647. Actual world seeds are of type `long`and can be much larger. This is why this tool cannot take in numerical seeds outside of this range.
 
